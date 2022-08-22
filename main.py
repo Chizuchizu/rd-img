@@ -8,14 +8,13 @@ import matplotlib.pyplot as plt
 def img2binary(img):
         array = img.flatten()
         ar = array.copy()
-        print(array.shape)
 
-        barray = np.zeros((8, 300)).astype(np.uint8)
+        barray = np.zeros((300, 8)).astype(np.uint8)
         for i in range(8):
-                barray[i] = array % 2
-                array //= 2
+            barray[:, i] = ar % 2
+            ar //= 2
 
-        return barray.flatten("F")  # 上位の次元から展開していく.普通のflattenでやるといけない.
+        return barray.flatten()
 
 def transform_encode(img, binary):
         img_array = img.flatten()
