@@ -1,12 +1,10 @@
 import numpy as np
 import cv2
 
+def make_random_img(height, width):
+    return np.random.randint(0, 256, (height, width, 3))
 
-array = np.random.randint(0, 256, (10, 10, 3))
-array2 = np.random.randint(0, 256, (10, 80, 3))
-array2 = np.zeros((10, 80, 3)).astype(np.uint8) + 255
 
-print(array)
+def make_white_img(height, width):
+    return np.zeros((height, width, 3), dtype=np.uint8) + 255
 
-cv2.imwrite("1010.png", array)
-cv2.imwrite("1080.png", array2)

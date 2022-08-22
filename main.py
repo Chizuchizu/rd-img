@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
+is_plt = True
 # plt.imshow(array)
 # plt.show()
 
@@ -49,21 +50,25 @@ img_encoded = transform_encode(img, barray)
 new_img = decode_img(img_encoded)
 
 # """
-fig = plt.figure()
-ax1 = fig.add_subplot(1, 2, 1)
-ax1.set_title("private img")
-plt.imshow(private_img)
-ax2 = fig.add_subplot(1, 2, 2)
-ax2.set_title("decoded img")
-plt.imshow(new_img)
-plt.show()
+if is_plt:
+        img_encoded = np.where(img_encoded == 254, 0, 255)
+        fig = plt.figure()
+        ax1 = fig.add_subplot(1, 2, 1)
+        ax1.set_title("private img")
+        plt.imshow(private_img)
+        ax2 = fig.add_subplot(1, 2, 2)
+        ax2.set_title("decoded img")
+        plt.imshow(new_img)
+        plt.show()
 
-fig = plt.figure()
-ax1 = fig.add_subplot(2, 1, 1)
-ax1.set_title("original img")
-plt.imshow(img)
-ax2 = fig.add_subplot(2, 1, 2)
-ax2.set_title("encoded img")
-plt.imshow(img_encoded)
-plt.show()
-# """
+        fig = plt.figure()
+        ax1 = fig.add_subplot(2, 1, 1)
+        ax1.set_title("original img")
+        plt.imshow(img)
+        ax2 = fig.add_subplot(2, 1, 2)
+        ax2.set_title("encoded img")
+        plt.imshow(img_encoded)
+        plt.show()
+        # """
+
+print(np.unique(img_encoded))
