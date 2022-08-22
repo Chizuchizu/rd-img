@@ -29,11 +29,11 @@ def decode_img(img):
         binary = img.flatten() % 2
         binary = binary.reshape(10, 10, 3, 8)
 
-        new_img = np.zeros((10, 10, 3))
+        new_img = np.zeros((10, 10, 3), dtype=np.uint8)
 
         for i in range(8):
                 new_img += binary[:, :, :, i] * (2 ** i)
-        new_img = new_img.astype(np.uint8)
+
         return new_img
 
 
